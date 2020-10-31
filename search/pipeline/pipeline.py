@@ -123,9 +123,11 @@ def run_pipeline(p, **kwargs):
         datas = [kwargs['data']] if kwargs['data'] else []
         try:
             for num, i in enumerate(todo_list):
+                # execute encoder
                 if num == len(todo_list) - 1:
                     vectors, _ = execute(i, urls=urls, datas=datas)
                     return vectors
+                # execute processor
                 _, metadatas = execute(i, urls=urls, datas=datas)
                 urls = [x.url for x in metadatas]
                 datas = [x.data for x in metadatas]

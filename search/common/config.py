@@ -40,6 +40,7 @@ SEARCH_MAGIC_NUM = os.getenv("SEARCH_MAGIC_NUM", 6)
 SEARCH_COUNT_NUM = os.getenv("SEARCH COUNT NUM", 3)
 
 # --------------
+# seems no longer used
 META_DATABASE_ENDPOINT = os.getenv("SEARCH_IMAGES_DATABASE_EP", "mysql://root:passwd@127.0.0.1:3306/search")
 META_DATABASE_USERNAME = os.getenv("SEARCH_IMAGES_DATABASE_USERNAME", "root")
 META_DATABASE_PASSWD = os.getenv("SEARCH_IMAGES_DATABASE_PASSWD", "passwd")

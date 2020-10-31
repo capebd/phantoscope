@@ -10,13 +10,14 @@
 # or implied. See the License for the specific language governing permissions and limitations under the License.
 
 
+# 4 blueprints (just treat them as 4 major "parts" or "modules" if you don't know bp) of api in this app
 from settings.settings_api import settings
 from application.application_api import application
 from pipeline.pipeline_api import pipeline
 from operators.operators_api import operator
 from service import app
 
-app.register_blueprint(settings, url_prefix='/v1/settings')
+app.register_blueprint(settings, url_prefix='/v1/settings') # nothing in this BP, just a stub there
 app.register_blueprint(pipeline, url_prefix='/v1/pipeline')
 app.register_blueprint(operator, url_prefix='/v1/operator')
 app.register_blueprint(application, url_prefix='/v1/application')

@@ -16,6 +16,7 @@ logging.basicConfig(level=logging.WARNING, filename=error_log, filemode='w+')
 accept_ends = ['bmp', 'jpg', 'jpeg', 'png']
 
 
+# get fields of the app
 def get_app_body_fields(address, app_name):
     url = "http://%s/v1/application/%s" % (address, app_name)
     try:
@@ -28,6 +29,7 @@ def get_app_body_fields(address, app_name):
         raise e
 
 
+# get fields of pipelines specifically
 def get_app_field_name(address, app_name, pipeline_name=None):
     all_fields = get_app_body_fields(address, app_name)
     res_fields = []
@@ -44,6 +46,7 @@ def get_app_field_name(address, app_name, pipeline_name=None):
     raise Exception(err_msg)
 
 
+# send base64 codes of the image data only. 'key' is the name of the field which might have one or more pipelines
 def construt_request_body(image_field, base64_image):
     template_data = {
         "fields": {

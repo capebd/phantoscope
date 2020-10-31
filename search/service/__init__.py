@@ -10,6 +10,7 @@ app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 CORS(app)
 
+# create a new docker client for communicating with the local Docker server
 runtime_client = runtime_client_getter(DEFAULT_RUNTIME)
 
 logger_dict_config = {
