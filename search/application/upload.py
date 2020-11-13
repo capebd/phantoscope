@@ -37,7 +37,7 @@ def upload(name, **kwargs):
  
         # if k is not a pipeline
         new_fields = app.fields.copy()
-        for k, v in kwargs.items():
+        for k, v in kwargs['fields'].items():
             if k in accept_fields:
                 new_fields[k]['value'] = v
 
@@ -80,6 +80,11 @@ def upload(name, **kwargs):
 
             # ids and url: used to retrieve data in milvus and S3
             docs[n] = {"ids": vids, "url": gen_url(bucket_name, file_name)}
+
+            # add other values 
+            for n in accept_fields:
+                docs[n] = new_fields.get(n)["value"]
+
             MongoIns.insert_documents(f"{app.name}_entity", docs)
             res.append(new_mapping_ins(docs))
         if not valid_field_flag:
